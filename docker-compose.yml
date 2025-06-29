@@ -1,0 +1,24 @@
+version: "3.9"
+
+services:
+  clientes:
+    build: ./clientes_service
+    ports:
+      - "8000:8000"
+
+  servicios:
+    build: ./servicios_service
+    ports:
+      - "8001:8000"
+
+  archivos:
+    build: ./archivos_service
+    ports:
+      - "8002:8000"
+    volumes:
+      - ./archivos_service/data:/app/data
+
+  auth:
+    build: ./auth_service
+    ports:
+      - "8003:8000"
